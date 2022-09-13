@@ -17,3 +17,15 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
+  
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "joke-app-tc"
+          heroku_email: "tom.cuillandre@sfr.fr"
